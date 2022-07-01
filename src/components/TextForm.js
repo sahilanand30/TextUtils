@@ -18,7 +18,6 @@ export default function TextForm(props) {
     for (let i = 0; i < len; i++) {
       x = x + (text[i] - "0") * (1<<(len - i - 1));
     }
-    // console.log(x);
     let newText = x.toString();
     setText(newText);
     props.showAlert("Congrats here is your decimal equivalent!", "success");
@@ -27,8 +26,6 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
   const [text, setText] = useState("");
-  //   text = "new text"; //incorrect way
-  //   setText("new text"); //correct way
   return (
     <>
       <div className="container" style={{color: props.mode==='light'?'black':'white'}}>
@@ -40,25 +37,25 @@ export default function TextForm(props) {
             onChange={handleOnChange}
             id="myBox"
             rows="8"
-            style={{backgroundColor: props.mode==='light'?'white':'grey', color: props.mode==='light'?'black':'white'}}
+            style={{backgroundColor: props.mode==='light'?'white':'#873434', color: props.mode==='light'?'black':'white'}}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLoClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleBinToDec}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleBinToDec}>
           Convert to decimal
         </button>
       </div>
       <div className="container my-3" style={{color: props.mode==='light'?'black':'white'}}>
         <h1>Your text summary</h1>
         <p>
-          {text.split(" ").length} words, {text.length} characters
+          {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes read</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Please, enter the text in the textbox to preview :)"}</p>
       </div>

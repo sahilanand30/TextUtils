@@ -32,10 +32,10 @@ function App() {
   };
   return (
     <>
-        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Navbar title={<strong><h2>TextUtils</h2></strong>} mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
-          <TextForm showAlert={showAlert} heading="Enter the text to analysze" mode={mode}>
+          <TextForm showAlert={showAlert} heading={<h1>Enter the text to manipulate</h1>} mode={mode}>
           </TextForm>
         </div>
     </>
